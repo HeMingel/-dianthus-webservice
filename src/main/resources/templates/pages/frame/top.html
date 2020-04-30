@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>top</title>
+<!--base style!-->
+<link th:href="@{/css/base.css}" type="text/css" rel="stylesheet" />
+<link th:href="@{/css/base_width.css}" type="text/css" rel="stylesheet" />
+<link th:href="@{/css/base_height.css}" type="text/css" rel="stylesheet" />
+<link th:href="@{/css/base_margin.css}" type="text/css" rel="stylesheet" />
+<link th:href="@{/css/base_padding.css}" type="text/css" rel="stylesheet" />
+<link th:href="@{/css/top.css}" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<div class="w bc h68 TopBg">
+		<div class="fl w h68">
+			<div class="fl leftbg" id="top_title1" name="top_title1" >
+				<span class="fl f30 ml30 mt10 mt20 top_title" id="top_title" name="top_title"></span>
+			</div>
+			<div class="fr rightbg">
+				<span class="fr White w100 mr15 mt10">
+					<span class="fl w30 tc mt20 h21"><img th:src="@{/images/ico_tc.png}" /></span>
+					<a th:href="@{/logout}" target="view_frame" class="fl Black tc mt22 ml5">退出系统</a>
+				</span>
+				<span class="fr White w150 mr25 mt10">
+					<span class="fl w30 tc mt15 h21"><img th:src="@{/images/ico_user.png}" /></span>
+					<font class="fl  tc mt22 Black ml5" th:text="${userName}"></font>
+				</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+<!--<div class="w fl h68 TopBg">-->
+	<!--<div class="bc w1400 h68">-->
+		<!--<div class="fl leftbg"><span class="fl f24 mt15 mt10 white ml30 top_title"> <strong>项目管理</strong> — 新增</span></div>-->
+		<!--<div class="fr rightbg">-->
+			<!--<span class="fr White w100 mr15 ">-->
+				<!--<span class="fl w30 tc mt20 h21"><img src="../images/ico_tc_1.png" /></span>-->
+				<!--<a href="../../../../index-1.html" target="view_frame" class="fl white tc mt22 ml5">退出系统</a>-->
+			<!--</span>-->
+			<!--<span class="fr White w130 mr25 ">-->
+				<!--<span class="fl w30 tc mt18 h21"><img src="../images/ico_user_1.png" /></span>-->
+				<!--<font class="fl  tc mt22 white ml5">Admin</font>-->
+			<!--</span>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->

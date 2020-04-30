@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>分页通用页面</title>
+</head>
+<body>
+<!--当前页 ，总页数 ，地址 ，参数 -->
+<th:block th:fragment="page(current, pages, url, urlPara)">
+    <div class="fl w pb35">
+        <div class="bc w500 pageDiv tc">
+            <a href="javascript:void(0)"  th:url="@{${url} + '&' + ${urlPara} + '= 1 '}" onclick="searchSubmit(this)" class="pageoff ml10">首页</a>
+            <a href="javascript:void(0)" th:if="${current>1}" class="ml10 pageoff" th:url="@{${url} + '&' + ${urlPara} + '=' + ${current - 1}}" onclick="searchSubmit(this)" >上一页</a>
+            <a th:if="${current==1}" class="ml10 pageoff" disabled>上一页</a>
+            <th:block th:if="${ pages <= 5 && pages > 0}" th:each="i: ${#numbers.sequence(1, pages)}">
+                <a class="ml10 pageoff" th:classappend="${current == i} ? ' pageon'"
+                   href="javascript:void(0)" th:url="@{${url} + '&'  + ${urlPara} + '=' + ${i}}" onclick="searchSubmit(this)" th:text="${i}"></a>
+            </th:block>
+            <th:block th:if="${current<3 && pages > 5 && current != pages}" th:each="i: ${#numbers.sequence(1, 5)}">
+                <a class="ml10 pageoff" th:classappend="${current == i} ? ' pageon'"
+                   href="javascript:void(0)"  onclick="searchSubmit(this)"   th:url="@{${url} + '&'  + ${urlPara} + '=' + ${i}}" th:text="${i}"></a>
+            </th:block>
+
+            <th:block th:if="${current >=3 && current +2 <= pages && pages > 5&& current != pages}" th:each="i: ${#numbers.sequence(current - 2,current +2)}">
+                <a class="ml10 pageoff" th:classappend="${current == i} ? 'pageon '"
+                   href="javascript:void(0)" onclick="searchSubmit(this)"   th:url="@{${url} + '&'  + ${urlPara} + '=' + ${i}}" th:text="${i}"></a>
+            </th:block>
+
+            <th:block th:if="${current +2 > pages && pages > 5 }" th:each="i: ${#numbers.sequence(pages - 4,pages)}">
+                <a class="ml10 pageoff" th:classappend="${current == i} ? 'pageon '"
+                   href="javascript:void(0)" onclick="searchSubmit(this)"  th:url="@{${url} + '&'  + ${urlPara} + '=' + ${i}}" th:text="${i}"></a>
+            </th:block>
+            <a th:if="${current} == ${pages}" class="ml10 pageoff" disabled>下一页</a>
+            <a th:if="${current} < ${pages}" class="ml10 pageoff"
+               href="javascript:void(0)" onclick="searchSubmit(this)" th:url="@{${url} + '&' + ${urlPara} + '=' + ${current + 1}}">下一页</a>
+            <a th:if ="${pages>0} " href="javascript:void(0)" onclick="searchSubmit(this)" th:url="@{${url} + '&' + ${urlPara} + '='+ ${pages}}" class="pageoff ml10">末页</a>
+            <a th:if="${pages == 0}" class="ml10 pageoff" disabled>下一页</a>
+            <a th:if ="${pages == 0} " class="pageoff ml10" disabled>末页</a>
+        </div>
+    </div>
+    <script>
+        function searchSubmit(o){
+            var searchForm  =  $("#searchForm");
+            var url = $(o).attr("url");
+            if(url) {
+                //判断是否有搜索Form
+                if (searchForm) {
+                    searchForm.attr("action",url);
+                    searchForm.submit();
+                } else {
+                    window.location.href = url;
+                }
+            }
+        }
+    </script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/base.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/base_width.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/base_height.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/base_margin.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/base_padding.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/web.css}" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/jqtransformplugin/jqtransform.css}" type="text/css" media="all"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.jqtransform-taiji.js}"></script>
+    <script language="JavaScript" th:src="@{/js/base.js}"></script>
+    <script language="javascript">
+        $(function () {
+            $('span').jqTransform({imgPath: 'jqtransformplugin/img/'});
+        });
+    </script>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body style="background:#f3f3f3;">
+<div class="bc w h68">
+    <div class="fl w min-h mt15 bg_white">
+        <div class="fl w ml100 mt35 titBg h45">
+            <span class="fl w150 f18 mt5 "><strong>新增/修改菜单</strong></span>
+        </div>
+        <!--right main-->
+        <div class="fr w min-h bg_white pb50">
+                <ul class="fl w800 ml100 mb50">
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">菜单名称：</span>
+                        <span class="fl ml15">
+                        <input type="text" name="menuName" id="menuName" class="fl mt6 ml10 w243 inputSearch"
+                               th:value="${menu.menuName}" >
+                    </span>
+                    </li>
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">菜单URL：</span>
+                        <span class="fl ml15">
+                            <input type="text" name="menuUrl" id="menuUrl" class="fr mt6 ml10 w243 inputSearch"
+                                   th:value="${menu.menuUrl}"
+                             placeholder="">
+                        </span>
+                    </li>
+                    <!--TODO 这里应该要改成上传图标 时间关系来不及开发 先填URL-->
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">图标URL：</span>
+                        <span class="fl ml15">
+                            <input type="text" name="menuIco" id="menuIco" class="fr mt6 ml10 w243 inputSearch"
+                                   th:value="${menu.menuIco}"
+                                   placeholder="">
+                        </span>
+                    </li>
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">是否有子菜单：</span>
+                        <span class="fl mr20"><input type="radio"  value="1"
+                                                     th:field="*{menu.hasSubmenu}"><span
+                                class="fl ml12 mt3">是</span></span>
+                        <span class="fl "><input type="radio"  value="0"
+                                                 th:field="*{menu.hasSubmenu}"><span
+                                class="fl ml12 mt3 ">否</span></span>
+                    </li>
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">排序：</span>
+                        <span class="fl ml15">
+                            <input type="text" name="menuOrder" id="menuOrder" class="fr mt6 ml10 w243 inputSearch"
+                                   th:value="${menu.menuOrder}"
+                                   placeholder="">
+                        </span>
+                    </li>
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">备注：</span>
+                        <span class="fl ml15">
+                            <textarea  rows="5" cols="20" name="menuRemark" id="menuRemark" class="fl mt6 ml10 w243"
+                                       th:text="${menu.menuRemark}" >
+
+                            </textarea>
+                    </span>
+                    </li>
+                    <input type="hidden" id="menuId" th:value="${menu.id}"/>
+                </ul>
+                <div class="bc w250 h100" th:if="${ null == menu.id } ">
+                    <a href="javascript:history.go(-1)" class="fr w107 btn click">返回</a>
+                    <input type="submit" class="fl w107 btn saveMenu" value="保存"/>
+                </div>
+                <div class="bc w250 h100" th:if="${ null != menu.id } ">
+                    <a href="javascript:history.go(-1)" class="fr w107 btn click">返回</a>
+                    <input type="submit" class="fl w107 btn saveMenu" value="修改"/>
+                </div>
+        </div>
+    </div>
+</div>
+<!--提示消息-->
+<div class="tip">
+    <div class="tiptop"><span>提示信息</span><a></a></div>
+    <div class="fl w400 h140 ml50">
+        <p class="fl w mt30 f18 prompt_msg"></p>
+        <p class="fl w mt15 f18 prompt_msg_desc"></p>
+    </div>
+    <div class="bc w220">
+        <input name="" type="button"  class="fl sure btn prompt_sure" value="确定" />&nbsp;
+        <input name="" type="button"  class="fr cancel btn prompt_cancel" value="取消" />
+    </div>
+</div>
+<div th:replace="/pages/foot.html::foot"></div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".prompt").click(function(){
+            $(".tip").fadeIn(200);
+        });
+
+        $(".tiptop a").click(function(){
+            $(".tip").fadeOut(200);
+        });
+
+        $(".sure").click(function(){
+            $(".tip").fadeOut(100);
+        });
+
+        $(".cancel").click(function(){
+            $(".tip").fadeOut(100);
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(".saveMenu").on('click',function () {
+            let menuName = $("#menuName").val();
+            if (null == menuName || "" == menuName) {
+                $(".prompt_msg").text("菜单名称不能为空");
+                $(".tip").fadeIn(200);
+                return null;
+            }
+            let menuOrder = $("#menuOrder").val();
+            if (null == menuOrder || "" == menuOrder) {
+                $(".prompt_msg").text("菜单排序不能为空");
+                $(".tip").fadeIn(200);
+                return null;
+            }
+            let hasSubmenu= $('input:radio[name="hasSubmenu"]:checked').val();
+            if (null == hasSubmenu) {
+                $(".prompt_msg").text("请选择是否含有子菜单");
+                $(".tip").fadeIn(200);
+                return null;
+            }
+            let menuUrl = $("#menuUrl").val();
+            let id = $("#menuId").val();
+            let menuIco = $("#menuIco").val();
+            let menuRemark = $("#menuRemark").val();
+
+            var data ={};
+            data.menuName = menuName;
+            data.menuOrder = menuOrder;
+            if (typeof menuUrl === "undefined" || menuUrl == null || menuUrl.trim() == "") {
+                 menuUrl=null;
+            }
+            data.menuUrl = menuUrl;
+
+            data.menuRemark = menuRemark;
+            data.menuIco = menuIco;
+            data.hasSubmenu = hasSubmenu;
+            data.id = id;
+            $.requestJsonAjax({
+                url: "/duty/api/menu/save",
+                type: "post",
+                data: data,
+                success: function (result) {
+                    window.location.href = "/duty/sys/menu/list";
+                }
+            })
+        })
+    })
+    
+</script>
+</html>

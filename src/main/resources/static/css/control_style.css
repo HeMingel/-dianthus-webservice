@@ -1,0 +1,41 @@
+@charset "utf-8";
+body{
+	margin:0px;
+	font-size:12px;
+	background:#eaeaea;
+	background-position:top right;
+	background-repeat:repeat-y;
+	vertical-align:middle;
+}
+
+table{
+	font-size:12px;
+}
+
+div{
+	font-size:12px;
+}
+.conArrowOut{
+	width:15px;
+	height:580px;
+	margin:0px auto;
+	}
+.conArrowRight{
+	background-image:url(../images/bg_arrow_right.png);
+	background-position:center;
+	background-repeat:no-repeat;
+	cursor:pointer;
+	width:15px;
+	margin:0px auto;
+	height:800px;
+}
+
+.conArrowLeft{
+	background-image:url(../images/bg_arrow_left.png);
+	background-position:center;
+	background-repeat:no-repeat;
+	cursor:pointer;	
+	width:15px;
+	margin:0px auto;
+	height:800px;
+}

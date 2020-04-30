@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="icon" th:href="@{/images/pm.ico}" type="image/x-icon"/>
+    <title>值班加班管理系统</title>
+</head>
+<frameset cols="230,15,*" id="mainframeset" frameborder="no" border="0" framespacing="0">
+    <frame src="/duty/home/menu" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame"/>
+    <frame border="0" name="controlFrame" src="/duty/home/controlframe" frameBorder="0" scrolling="NO" noresize >
+    <frameset rows="78,*" frameborder="no" border="0" framespacing="0">
+        <frame src="/duty/home/top" name="topFrame" scrolling="No" noresize="noresize" id="topFrame"
+               title="topFrame"/>
+        <frame src="/duty/home/index" name="rightFrame" id="rightFrame" title="rightFrame"/>
+    </frameset>
+
+<!--    <frameset id="mainframeset" border="0" frameSpacing="0" cols="230,15,*">-->
+<!--        <frame border="0" name="leftFrame" src="frame/menu.html" frameBorder="0" scrolling="NO">-->
+<!--        <frame border="0" name="controlFrame" src="frame/controlframe.html" frameBorder="0" scrolling="NO" noresize >-->
+<!--        <frameset rows="78,*" frameborder="no" border="0" name="mainPage">-->
+<!--            <frame src="frame/top.html" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame"/>-->
+<!--            <frame src="pages/page-zbcx.html" name="rightFrame" id="rightFrame" title="rightFrame" />-->
+<!--        </frameset>-->
+<!--    </frameset>-->
+</frameset>
+<noframes>
+    <body>
+    </body>
+</noframes>
+</html>

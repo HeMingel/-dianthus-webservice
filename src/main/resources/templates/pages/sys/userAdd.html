@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link th:href="@{/css/base.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/base_width.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/base_height.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/base_margin.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/base_padding.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/web.css}" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/jqtransformplugin/jqtransform.css}" type="text/css" media="all"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.jqtransform-taiji.js}"></script>
+    <script language="JavaScript" th:src="@{/js/base.js}"></script>
+    <script language="javascript">
+        $(function () {
+            $('span').jqTransform({imgPath: 'jqtransformplugin/img/'});
+        });
+    </script>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body style="background:#f3f3f3;">
+<div class="bc w h68">
+    <div class="fl w min-h mt15 bg_white">
+        <div class="fl w ml100 mt35 titBg h45">
+            <span class="fl w108 f18 mt5">用户详情</span>
+        </div>
+        <!--right main-->
+        <div class="fr w min-h bg_white pb50">
+                <ul class="fl w800 ml100 mb50">
+                    <input type="hidden" name="userId" id="userId" class="fl mt6 ml10 w243 inputSearch"
+                              th:value="${user.id}">
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">用户姓名：</span>
+                        <span class="fl ml15">
+                        <input type="text" name="userName" id="userName" class="fl mt6 ml10 w243 inputSearch"
+                               th:value="${user.name}" >
+                             <input type="hidden" name="userPassword" id="userPassword"
+                                    th:value="${user.userPassword}" >
+                    </span>
+                    </li>
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">登录名：</span>
+                        <span class="fl ml15">
+                        <input type="text" name="userLoginName" id="userLoginName" class="fl mt6 ml10 w243 inputSearch"
+                               th:value="${user.userLoginName}" >
+                    </span>
+                    </li>
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">邮箱地址:</span>
+                        <span class="fl ml15">
+                            <input type="text" name="userMail" id="userMail" class="fl mt6 ml10 w243 inputSearch"
+                                   th:value="${user.userMail}" >
+                    </span>
+                    </li>
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">组织:</span>
+                        <span class="fl m"   th:each="org:${orgList}" >
+                        <span class="fl ml15">
+                          <input type="radio"  th:value="${org.id}"  th:field="*{user.orgId}">
+                             <span class="fl ml12 mt3" th:text="${org.orgName}"></span>
+                              </span>
+                    </span>
+                    </li>
+                    <li class="fl w mt30">
+                        <span class="fl w150 tr mt5">用户角色:</span>
+                        <span class="fl m"   th:each="role:${roleList}" >
+
+                         <span class="fl mr20">
+                             <input type="radio"  th:value="${role.id}"  th:field="*{user.roleId}">
+                             <span class="fl ml12 mt3" th:text="${role.roleDesc}"></span>
+                         </span>
+                        </span>
+
+                    </li>
+                    <li class="fl w520 mt30">
+                        <span class="fl w150 tr mt5">联系电话:</span>
+                        <span class="fl ml15">
+                            <input type="text" name="userTel" id="userTel" class="fl mt6 ml10 w243 inputSearch"
+                                   th:value="${user.userPhone}" >
+                    </span>
+                    </li>
+                </ul>
+                <div class="bc w250 h100" th:if="${ null == user.id } ">
+                    <a href="javascript:history.go(-1)" class="fr w107 btn click">返回</a>
+                    <input type="submit" class="fl w107 btn saveUser" value="保存"/>
+                </div>
+                <div class="bc w250 h100" th:if="${ null !=  user.id } ">
+                    <a href="javascript:history.go(-1)" class="fr w107 btn click">返回</a>
+                    <input type="submit" class="fl w107 btn saveUser" value="修改"/>
+                </div>
+        </div>
+    </div>
+</div>
+<!--提示消息-->
+<div class="tip">
+    <div class="tiptop"><span>提示信息</span><a></a></div>
+    <div class="fl w400 h140 ml50">
+        <p class="fl w mt30 f18 prompt_msg">是否确认对信息的修改 ？</p>
+        <p class="fl w mt15 f18 prompt_msg_desc"></p>
+    </div>
+    <div class="bc w220">
+        <input name="" type="button"  class="fl sure btn prompt_sure" value="确定" />&nbsp;
+        <input name="" type="button"  class="fr cancel btn prompt_cancel" value="取消" />
+    </div>
+</div>
+<div th:replace="/pages/foot.html::foot"></div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".prompt").click(function(){
+            $(".tip").fadeIn(200);
+        });
+
+        $(".tiptop a").click(function(){
+            $(".tip").fadeOut(200);
+        });
+
+        $(".sure").click(function(){
+            $(".tip").fadeOut(100);
+        });
+
+        $(".cancel").click(function(){
+            $(".tip").fadeOut(100);
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(".saveUser").on('click',function () {
+
+            var data ={};
+            var name = $("#userName").val();
+            if (null == name || "" == name) {
+                $(".prompt_msg").text("用户姓名不能为空");
+                $(".tip").fadeIn(200);
+                return null;
+            }
+            var orgId =    $('input:radio[name="orgId"]:checked').val();
+            if (null == orgId || "" == orgId) {
+                $(".prompt_msg").text("请填写组织信息");
+                $(".tip").fadeIn(200);
+                return null;
+            }
+            var userLoginName = $("#userLoginName").val();
+            if (null == userLoginName || "" == userLoginName) {
+                $(".prompt_msg").text("登录名不能为空");
+                $(".tip").fadeIn(200);
+                return null;
+            }
+            var  roleId = $('input:radio[name="roleId"]:checked').val();
+            if (null == roleId || "" == roleId) {
+                $(".prompt_msg").text("请填写角色信息");
+                $(".tip").fadeIn(200);
+                return null;
+            }
+            var  userPhone =  $("#userTel").val();
+            if (null == userPhone || "" == userPhone) {
+                $(".prompt_msg").text("请填写用户联系方式");
+                $(".tip").fadeIn(200);
+                return null;
+            }
+            data.id = $("#userId").val();
+            data.name = name
+            data.userMail = $("#userMail").val();
+            data.userPhone = userPhone;
+            data.orgId = orgId;
+            data.userLoginName =userLoginName
+            data.userPassword = $("#userPassword").val();
+            data.roleId = roleId;
+            $.requestJsonAjax({
+                url: "/duty/api/user/save",
+                type: "post",
+                data: data,
+                success: function (result) {
+                    window.location.href = "/duty/sys/user/list";
+                }
+            })
+        })
+    })
+    
+</script>
+</html>

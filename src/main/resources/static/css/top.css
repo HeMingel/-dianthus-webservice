@@ -1,0 +1,13 @@
+body{
+	overflow-x:hidden;
+	background:#ffffff;
+	font-size:16px;
+	color:#000000;
+	font-family:'Î¢ÈíÑÅºÚ';}
+a,a:hover,a:active,a:visited{color:#00000;}
+.leftbg{
+	height:68px;}
+.rightbg{
+	height:68px;}
+.name{font-size:24px;color:#000000;}
+.top{border-bottom:10px #f4f4f4 solid;}
