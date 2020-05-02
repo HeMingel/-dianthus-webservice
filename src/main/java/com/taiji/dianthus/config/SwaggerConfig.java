@@ -43,13 +43,13 @@ public class SwaggerConfig {
         private ApiInfo apiInfo() {
             return new ApiInfoBuilder()
                     //标题
-                    .title("管理接口文档")
+                    .title("Dianthus接口文档")
                     //简介
-                    .description("")
+                    .description("系统只显示@RestController下的API接口，外部接口调用需要在SecurityConfig开放链接")
                     //服务条款
                     .termsOfServiceUrl("")
                     //作者个人信息
-                    .contact(new Contact("H.M","","angelhm@sina.cn"))
+                    .contact(new Contact("H.M","https://me.csdn.net/HM_1011000000","angelhm@sina.cn"))
                     //版本
                     .version("1.0")
                     .build();

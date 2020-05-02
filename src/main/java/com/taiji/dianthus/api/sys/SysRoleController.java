@@ -99,12 +99,7 @@ public class SysRoleController {
         return message;
     }
 
-    /**
-     * 删除用户
-     *
-     * @param id
-     * @return
-     */
+
     @PostMapping(value = "/delete")
     @ResponseBody
     @ApiOperation(value = "删除角色", notes = "删除角色接口")

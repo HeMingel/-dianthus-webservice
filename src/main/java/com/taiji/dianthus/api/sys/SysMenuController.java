@@ -24,12 +24,8 @@ public class SysMenuController {
     @Autowired
     private MenuService menuService;
 
-    /**
-     * 保存
-     * @param menu
-     * @return
-     */
-    @PostMapping(value = "/save")
+
+    @RequestMapping(value = "/save")
     @ResponseBody
     @ApiOperation(value = "保存/修改菜单", notes = "菜单保存/修改接口")
     @ApiImplicitParam(name = "form", value = "保存/修改菜单", required = true, dataType = "DSysMenu")
@@ -37,11 +33,7 @@ public class SysMenuController {
         return menuService.saveMenu(menu);
     }
 
-    /**
-     * 删除菜单
-     * @param id
-     * @return
-     */
+
     @PostMapping(value = "/delete")
     @ResponseBody
     @ApiOperation(value = "删除菜单", notes = "删除菜单接口")

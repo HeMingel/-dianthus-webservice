@@ -35,8 +35,7 @@ public class DSysOrg implements Serializable {
     @ApiModelProperty(value = "平台推送的ID", name = "pushId")
     private String pushId;
 
-    @Column(name = "组织名称")
-    @NotNull(message = "组织名不能为空")
+    @Column(name = "org_name")
     @ApiModelProperty(value = "名称", name = "orgName")
     private String orgName;
 

@@ -29,7 +29,7 @@ public class SysOrgController {
     @ResponseBody
     @ApiOperation(value = "保存/修改组织方法", notes = "组织保存/修改接口")
     @ApiImplicitParam(name = "form", value = "保存/修改组织", required = true, dataType = "DSysOrg")
-    public BusinessMessage saveOrg(DSysOrg pushOrg) {
+    public BusinessMessage saveOrg(@RequestBody DSysOrg pushOrg) {
         return pushOrgService.save(pushOrg);
     }
 
