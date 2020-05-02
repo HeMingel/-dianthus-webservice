@@ -25,22 +25,22 @@
 </head>
 
 <body>
-<div class="tit_1">值班加班管理系统<span style="font-size:14px;">(未启用)</span></div>
+<div class="tit_1">管理系统</div>
 <div id="left_ctn">
     <ul class="sidenav">
 
         <li th:each="menu,loopStatus:${menu}">
             <div class="nav_m">
-                <a th:href="${menu.MenuUrl} eq null  ? 'javascript:void(0)' : ${'/duty' + menu.MenuUrl+'?currentPage=1'}"
+                <a th:href="${menu.MenuUrl} eq null  ? 'javascript:void(0)' : ${menu.MenuUrl+'?currentPage=1'}"
                    target="rightFrame">
-                    <cite><img th:src="${'/duty'+menu.menuIco}"/></cite>
+                    <cite><img th:src="${menu.menuIco}"/></cite>
                     <span th:text="${menu.MenuName}"></span>
                 </a>
                 <i>&nbsp;</i>
             </div>
             <ul class="erji" th:if="${menu.hasSubmenu} == 1">
                 <li th:each="child:${menu.child}">
-                    <a th:href="${'/duty'+child.MenuUrl}" target="rightFrame" th:text="${child.MenuName}"></a>
+                    <a th:href="${child.MenuUrl}" target="rightFrame" th:text="${child.MenuName}"></a>
                 </li>
             </ul>
         </li>

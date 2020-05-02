@@ -123,11 +123,11 @@
             data.roleRemark = roleRemark;
             data.id = id;
             $.requestJsonAjax({
-                url: "/duty/api/role/save",
+                url: "/dianthus/api/role/save",
                 type: "post",
                 data: data,
                 success: function (result) {
-                    window.location.href = "/duty/sys/role/list";
+                    window.location.href = "/dianthus/sys/role/list";
                 }
             })
         })

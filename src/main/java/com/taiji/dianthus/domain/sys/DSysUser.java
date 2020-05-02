@@ -1,6 +1,8 @@
 package com.taiji.dianthus.domain.sys;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Proxy;
 
@@ -18,97 +20,67 @@ import java.util.Date;
 @Proxy(lazy = false)
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@ApiModel(description = "用户表")
 public class DSysUser {
 
     @Id
     @GeneratedValue(generator = "jpa-uuid")
     @Column(name = "id")
+    @ApiModelProperty(value = "主键", name = "id")
     private String id;
 
-    /**
-     * 平台推送的ID
-     */
     @Column(name = "push_id")
+    @ApiModelProperty(value = "平台推送的ID", name = "push_id")
     private String pushId;
 
-    /**
-     * 用户名称
-     */
     @Column(name = "user_name")
+    @ApiModelProperty(value = "用户名", name = "name")
     private String name;
 
-    /**
-     * 登陆名称
-     */
     @Column(name = "user_login_name")
+    @ApiModelProperty(value = "登陆名称", name = "userLoginName")
     private String userLoginName;
 
-    /**
-     * 登陆密码
-     */
     @Column(name = "user_password")
+    @ApiModelProperty(value = "登陆密码", name = "userPassword")
     private String userPassword;
 
-
-    /**
-     * 邮件地址
-     */
     @Column(name = "user_mail")
+    @ApiModelProperty(value = "邮件地址", name = "userMail")
     private String userMail;
 
-    /**
-     * 联系方式
-     */
     @Column(name = "user_phone")
+    @ApiModelProperty(value = "用户手机号", name = "userPhone")
     private String userPhone;
 
-    /**
-     * 组织id
-     */
     @Column(name = "org_id")
+    @ApiModelProperty(value = "组织id", name = "orgId")
     private String orgId;
 
-    /**
-     * 上次登陆时间
-     */
     @Column(name = "last_login_time")
+    @ApiModelProperty(value = "上次登陆时间", name = "lastLoginTime")
     private String lastLoginTime;
 
-    /**
-     * 用户排序
-     */
     @Column(name = "user_order")
+    @ApiModelProperty(value = "用户排序", name = "userOrder")
     private Integer userOrder;
 
-    /**
-     * 用户座机
-     */
-    @Column(name = "userLandline")
-    private String userLandline;
+    @Column(name = "user_office_phone")
+    @ApiModelProperty(value = "用户座机", name = "officePhone")
+    private String officePhone;
 
-    /**
-     * 用户职位
-     */
-    @Column(name = "user_dianthus")
-    private String userDianthus;
+    @Column(name = "user_duty")
+    @ApiModelProperty(value = "用户职位", name = "userDuty")
+    private String userDuty;
 
-    /**
-     * 用户职位
-     */
     @Column(name = "user_position")
+    @ApiModelProperty(value = "用户职责", name = "userPosition")
     private String userPosition;
 
-    /**
-     * 用户性别
-     */
     @Column(name = "user_sex")
+    @ApiModelProperty(value = "用户性别", name = "userSex")
     private String userSex;
 
-    /**
-     * 是否兼任 1 是 0 否
-     */
-    @Column(name = "parttime")
-    private Integer parttime;
 
     /**
      * 创建时间戳
@@ -202,22 +174,6 @@ public class DSysUser {
         this.userOrder = userOrder;
     }
 
-    public String getUserLandline() {
-        return userLandline;
-    }
-
-    public void setUserLandline(String userLandline) {
-        this.userLandline = userLandline;
-    }
-
-    public String getUserDianthus() {
-        return userDianthus;
-    }
-
-    public void setUserDianthus(String userDianthus) {
-        this.userDianthus = userDianthus;
-    }
-
     public String getUserPosition() {
         return userPosition;
     }
@@ -233,15 +189,6 @@ public class DSysUser {
     public void setUserSex(String userSex) {
         this.userSex = userSex;
     }
-
-    public Integer getParttime() {
-        return parttime;
-    }
-
-    public void setParttime(Integer parttime) {
-        this.parttime = parttime;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -258,13 +205,29 @@ public class DSysUser {
         this.enableFlag = enableFlag;
     }
 
+    public String getUserDuty() {
+        return userDuty;
+    }
+
+    public void setUserDuty(String userDuty) {
+        this.userDuty = userDuty;
+    }
+
+    public String getOfficePhone() {
+        return officePhone;
+    }
+
+    public void setOfficePhone(String officePhone) {
+        this.officePhone = officePhone;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", userName='" + name + '\'' +
                 ", userCode='" + pushId + '\'' +
-                ", userDianthusb='" + userDianthus + '\'' +
+                ", userDianthusb='" + userDuty + '\'' +
                 ", userLoginName='" + userLoginName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", createTime=" + createTime +

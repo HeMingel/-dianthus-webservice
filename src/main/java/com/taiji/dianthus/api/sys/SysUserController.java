@@ -5,6 +5,7 @@ import com.taiji.dianthus.common.BusinessMessage;
 import com.taiji.dianthus.dto.UserDto;
 import com.taiji.dianthus.service.sys.RoleUserService;
 import com.taiji.dianthus.service.sys.UserService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @Author H.M
  * @Date 2020/1/8
  */
+@Api(value = "用户API")
 @RestController
 @RequestMapping(value = "/api/user")
 public class SysUserController {

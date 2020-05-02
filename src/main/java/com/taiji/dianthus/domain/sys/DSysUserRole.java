@@ -1,6 +1,8 @@
 package com.taiji.dianthus.domain.sys;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.Column;
@@ -20,9 +22,6 @@ import javax.persistence.Table;
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class DSysUserRole {
 
-    /**
-     *主键
-     */
     @Id
     @Column(name = "role_id")
     private String roleId;

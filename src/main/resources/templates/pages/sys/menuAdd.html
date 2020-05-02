@@ -165,11 +165,11 @@
             data.hasSubmenu = hasSubmenu;
             data.id = id;
             $.requestJsonAjax({
-                url: "/duty/api/menu/save",
+                url: "/dianthus/api/menu/save",
                 type: "post",
                 data: data,
                 success: function (result) {
-                    window.location.href = "/duty/sys/menu/list";
+                    window.location.href = "/dianthus/sys/menu/list";
                 }
             })
         })

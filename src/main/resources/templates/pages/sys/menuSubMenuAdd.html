@@ -144,11 +144,11 @@
             data.parentId = parentId;
             data.id = id;
             $.requestJsonAjax({
-                url: "/duty/api/menu/save",
+                url: "/dianthus/api/menu/save",
                 type: "post",
                 data: data,
                 success: function (result) {
-                    window.location.href = "/duty/sys/menu/subMenu?menuId="+parentId;
+                    window.location.href = "/dianthus/sys/menu/subMenu?menuId="+parentId;
                 }
             })
         })

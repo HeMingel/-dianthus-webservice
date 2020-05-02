@@ -53,14 +53,6 @@ public final class Constant {
      * 操作日志 类型  其他
      */
     public static final  Integer LOG_OPERATION_OTHER = 6;
-    /**
-     * 新增流程界面url
-     */
-    public static final  String PROCESS_PAGE_URL = "/implement/customize";
-    /**
-     * 自定义界面url
-     */
-    public static final  String PROJECT_PROCESS_URL = "/project/process/customize";
 
     /**
      * 符号

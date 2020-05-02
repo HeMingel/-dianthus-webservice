@@ -85,14 +85,14 @@
                     //请求方式
                     type: "GET",
                     //请求地址
-                    url: "/duty/api/role/saveMenuRole?menuIds="+ids+"&roleId="+roleId,
+                    url: "/dianthus/api/role/saveMenuRole?menuIds="+ids+"&roleId="+roleId,
                     beforeSend : function(xhr) {
                         xhr.setRequestHeader(header, token);
                     },
                     success: function (result) {
                         if (result.success) {
                             alert(result.msg)
-                            window.location.href="/duty/sys/role/edit?roleId="+roleId;
+                            window.location.href="/dianthus/sys/role/edit?roleId="+roleId;
                         } else {
                             alert(result.msg)
 						}

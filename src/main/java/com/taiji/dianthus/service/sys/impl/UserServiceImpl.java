@@ -155,7 +155,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 根据用户唯一码获取菜单  TODO
+     * 根据用户唯一码获取菜单
      *
      * @param userCode
      * @return

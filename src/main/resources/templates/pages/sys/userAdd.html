@@ -171,11 +171,11 @@
             data.userPassword = $("#userPassword").val();
             data.roleId = roleId;
             $.requestJsonAjax({
-                url: "/duty/api/user/save",
+                url: "/dianthus/api/user/save",
                 type: "post",
                 data: data,
                 success: function (result) {
-                    window.location.href = "/duty/sys/user/list";
+                    window.location.href = "/dianthus/sys/user/list";
                 }
             })
         })

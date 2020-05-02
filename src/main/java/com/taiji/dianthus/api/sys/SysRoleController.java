@@ -7,11 +7,14 @@ import com.taiji.dianthus.domain.sys.DSysRoleMenu;
 import com.taiji.dianthus.service.sys.MenuRoleService;
 import com.taiji.dianthus.service.sys.RoleService;
 import com.taiji.dianthus.service.sys.RoleUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +26,7 @@ import java.util.stream.Collectors;
  * @Author H.M
  * @Date 2019/12/24
  */
+@Api(value = "角色api")
 @RestController
 @RequestMapping(value = "/api/role")
 public class SysRoleController {
@@ -36,28 +40,21 @@ public class SysRoleController {
     @Autowired
     private MenuRoleService menuRoleService;
 
-    /**
-     * 保存角色方法
-     *
-     * @param role
-     * @return
-     */
     @PostMapping(value = "/save")
     @ResponseBody
+    @ApiOperation(value = "保存/修改角色方法", notes = "保存/修改角色接口")
+    @ApiImplicitParam(name = "form", value = "保存/修改角色", required = true, dataType = "DSysRole")
     public BusinessMessage saveRole(@RequestBody DSysRole role) {
         return roleService.saveRole(role);
     }
 
 
-    /**
-     * 保存角色的菜单权限
-     * @param request
-     * @param menuIds
-     * @param roleId
-     * @return
-     */
     @GetMapping(value = "/saveMenuRole")
     @ResponseBody
+    @ApiOperation(value = "保存角色的菜单权限", notes = "保存角色的菜单权限接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="menuIds",value="菜单主键,多个以,号隔开",dataType="string", required = true,paramType = "query"),
+            @ApiImplicitParam(name="roleId",value="角色ID",dataType="string", required = true,paramType = "query") })
     public BusinessMessage saveRole(HttpServletRequest request, String menuIds, String roleId) {
         BusinessMessage message = new BusinessMessage();
         try {
@@ -110,6 +107,8 @@ public class SysRoleController {
      */
     @PostMapping(value = "/delete")
     @ResponseBody
+    @ApiOperation(value = "删除角色", notes = "删除角色接口")
+    @ApiImplicitParam(name="id",value="主键",dataType="string", required = true,paramType = "query")
     public BusinessMessage deleteRole(@Param("id") String id) {
         BusinessMessage message = new BusinessMessage();
         Integer result = roleUserService.countByRole(id);

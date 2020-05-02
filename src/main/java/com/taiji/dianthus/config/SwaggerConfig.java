@@ -2,6 +2,7 @@ package com.taiji.dianthus.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -34,7 +35,7 @@ public class SwaggerConfig {
                     .select()
                     //如果不想将所有的接口都通过swagger管理的话，可以将RequestHandlerSelectors.any()
                     // 修改为RequestHandlerSelectors.basePackage()
-                    .apis(RequestHandlerSelectors.any())
+                    .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                     .paths(PathSelectors.any())
                     .build();
         }
@@ -42,7 +43,7 @@ public class SwaggerConfig {
         private ApiInfo apiInfo() {
             return new ApiInfoBuilder()
                     //标题
-                    .title("项目管理接口文档")
+                    .title("管理接口文档")
                     //简介
                     .description("")
                     //服务条款

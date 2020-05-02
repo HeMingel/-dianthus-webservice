@@ -1,10 +1,13 @@
 package com.taiji.dianthus.domain.sys;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -19,48 +22,43 @@ import java.util.Date;
 @Proxy(lazy = false)
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@ApiModel(description = "系统组织表")
 public class DSysOrg implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
     @Column(name = "id")
+    @GeneratedValue(generator = "jpa-uuid")
+    @ApiModelProperty(value = "主键", name = "id")
     private String id;
 
-    /**
-     *平台推送的ID
-     */
     @Column(name = "push_id")
+    @ApiModelProperty(value = "平台推送的ID", name = "pushId")
     private String pushId;
-    /**
-     * 名称
-     */
-    @Column(name = "org_name")
+
+    @Column(name = "组织名称")
+    @NotNull(message = "组织名不能为空")
+    @ApiModelProperty(value = "名称", name = "orgName")
     private String orgName;
-    /**
-     *父级ID
-     */
-    @Column(name="parent_id")
+
+    @Column(name = "parent_id")
+    @ApiModelProperty(value = "上级ID", name = "parentId")
     private String parentId;
 
-    /**
-     *组织层级
-     */
-    @Column(name="org_level")
+    @Column(name = "org_level")
+    @ApiModelProperty(value = "组织层级", name = "orgLevel")
     private Integer orgLevel;
 
-    /**
-     * 组织排序
-     */
-    @Column(name="org_order")
+    @Column(name = "org_order")
+    @ApiModelProperty(value = "组织排序", name = "orgOrder")
     private Integer orgOrder;
 
     /**
-     *创建时间戳
+     * 创建时间戳
      */
-    @Column(name ="create_time" ,insertable =false,updatable = false)
+    @Column(name = "create_time", insertable = false, updatable = false)
     private Date createTime;
 
-    @Column(name="enable_flag" ,insertable =false,updatable = false)
+    @Column(name = "enable_flag", insertable = false, updatable = false)
     private Integer enableFlag;
 
     public String getId() {

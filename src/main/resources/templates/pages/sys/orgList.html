@@ -103,7 +103,7 @@
 
     function deleteOrg(orgId) {
         $.requestAjax({
-            url: "/duty/api/org/delete",
+            url: "/dianthus/api/org/delete",
             type: "post",
             data: {"id": orgId},
             success: function (result) {

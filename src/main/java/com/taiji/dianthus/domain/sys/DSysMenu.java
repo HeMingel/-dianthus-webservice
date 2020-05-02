@@ -1,9 +1,12 @@
 package com.taiji.dianthus.domain.sys;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 /**
@@ -16,68 +19,52 @@ import java.util.Date;
 @Table(name = "d_sys_menu")
 @Proxy(lazy = false)
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@ApiModel(description = "系统菜 单表")
 public class DSysMenu {
 
     @Id
     @GeneratedValue(generator = "jpa-uuid")
-    @Column(name="id")
+    @Column(name = "id")
+    @ApiModelProperty(value = "主键", name = "id")
     private String id;
 
-    /**
-     *菜单名称
-     */
     @Column(name = "menu_name")
+    @ApiModelProperty(value = "菜单名称", name = "menuName")
     private String menuName;
 
-    /**
-     *菜单说明
-     */
-    @Column(name ="menu_desc")
+    @Column(name = "menu_desc")
+    @ApiModelProperty(value = "菜单说明", name = "menuDesc")
     private String menuDesc;
 
-    /**
-     *备注
-     */
-    @Column(name ="menu_remark")
+    @Column(name = "menu_remark")
+    @ApiModelProperty(value = "备注", name = "menuRemark")
     private String menuRemark;
 
-    /**
-     *排序
-     */
-    @Column(name ="menu_order")
+    @Column(name = "menu_order")
+    @ApiModelProperty(value = "排序", name = "menuOrder")
     private Integer menuOrder;
 
-    /**
-     *菜单链接
-     */
-    @Column(name ="menu_url")
+    @Column(name = "menu_url")
+    @NotBlank(message = "菜单链接不能为空")
+    @ApiModelProperty(value = "菜单链接", name = "menuUrl")
     private String menuUrl;
 
-    /**
-     *父级ID
-     */
-    @Column(name ="parent_id")
+    @Column(name = "parent_id")
+    @ApiModelProperty(value = "父级ID", name = "parentId")
     private String parentId;
 
-    /**
-     * 图标
-     */
-    @Column(name="menu_ico")
+    @Column(name = "menu_ico")
+    @ApiModelProperty(value = "图标", name = "menuIco")
     private String menuIco;
 
-    /**
-     * 是否有子菜单
-     */
-    @Column(name="has_submenu")
+    @Column(name = "has_submenu")
+    @ApiModelProperty(value = "是否有子菜单", name = "hasSubmenu")
     private Integer hasSubmenu;
 
-    /**
-     *创建时间戳
-     */
-    @Column(name ="create_time" ,insertable =false,updatable = false)
+    @Column(name = "create_time", insertable = false, updatable = false)
     private Date createTime;
 
-    @Column(name="enable_flag" ,insertable =false,updatable = false)
+    @Column(name = "enable_flag", insertable = false, updatable = false)
     private Integer enableFlag;
 
     public String getId() {

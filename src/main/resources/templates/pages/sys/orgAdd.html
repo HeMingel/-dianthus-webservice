@@ -137,11 +137,11 @@
             data.orgOrder = orgOrder;
 
             $.requestJsonAjax({
-                url: "/duty/api/org/save",
+                url: "/dianthus/api/org/save",
                 type: "post",
                 data: data,
                 success: function (result) {
-                    window.location.href = "/duty/sys/org/list";
+                    window.location.href = "/dianthus/sys/org/list";
                 }
             })
         })

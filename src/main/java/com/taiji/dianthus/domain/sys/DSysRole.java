@@ -1,6 +1,8 @@
 package com.taiji.dianthus.domain.sys;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
@@ -8,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @ClassName DsysRole
+ * @ClassName DSysRole
  * @Description
  * @Author H.M
  * @Date 2020/3/16
@@ -17,30 +19,25 @@ import java.util.Date;
 @Table(name = "d_sys_role")
 @Proxy(lazy = false)
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@ApiModel(description = "")
 public class DSysRole implements Serializable {
     @Id
     @GeneratedValue(generator = "jpa-uuid")
     @Column(name="id")
+    @ApiModelProperty(value = "主键", name = "id")
     private String id;
 
-    /**
-     *角色名称
-     */
     @Column(name = "role_name")
+    @ApiModelProperty(value = "角色名称", name = "roleName")
     private String roleName;
 
-    /**
-     *角色说明
-     */
     @Column(name ="role_desc")
+    @ApiModelProperty(value = "角色说明", name = "roleDesc")
     private String roleDesc;
 
-    /**
-     *备注
-     */
     @Column(name ="role_remark")
+    @ApiModelProperty(value = "备注", name = "roleRemark")
     private String roleRemark;
-
 
     /**
      *创建时间戳

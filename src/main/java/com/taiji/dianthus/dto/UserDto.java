@@ -1,82 +1,61 @@
 package com.taiji.dianthus.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.persistence.Column;
+
 /**
  * @ClassName UserDto
  * @Description
  * @Author H.M
  * @Date 2020/1/8
  */
+
+@ApiModel(description = "用户dto")
 public class UserDto {
 
-
+    @ApiModelProperty(value = "主键", name = "id")
     private String  id;
 
-    /**
-     * 用户名称
-     */
+    @ApiModelProperty(value = "用户名", name = "name")
     private String name;
 
-    /**
-     * 登陆名称
-     */
+    @ApiModelProperty(value = "登陆名称", name = "userLoginName")
     private String userLoginName;
 
-    /**
-     * 登陆密码
-     */
+    @ApiModelProperty(value = "登陆密码", name = "userPassword")
     private String userPassword;
 
-
-    /**
-     * 邮件地址
-     */
+    @ApiModelProperty(value = "邮件地址", name = "userMail")
     private String userMail;
 
-    /**
-     * 联系方式
-     */
+    @ApiModelProperty(value = "用户手机号", name = "userPhone")
     private String userPhone;
 
-    /**
-     * 组织id
-     */
-    private String  orgId;
+    @ApiModelProperty(value = "组织id", name = "orgId")
+    private String orgId;
 
-    /**
-     * 上次登陆时间
-     */
+    @ApiModelProperty(value = "上次登陆时间", name = "lastLoginTime")
     private String lastLoginTime;
 
-    /**
-     * 角色ID
-     */
-    private String roleId;
-
-
-    /**
-     * 用户排序
-     */
+    @ApiModelProperty(value = "用户排序", name = "userOrder")
     private Integer userOrder;
 
-    /**
-     * 用户座机
-     */
-    private String userLandline;
+    @ApiModelProperty(value = "用户座机", name = "officePhone")
+    private String officePhone;
 
-    /**
-     * 用户职位
-     */
-    private String userDianthus;
+    @ApiModelProperty(value = "用户职位", name = "userDuty")
+    private String userDuty;
 
-    /**
-     * 用户职位
-     */
+    @ApiModelProperty(value = "用户职责", name = "userPosition")
     private String userPosition;
 
-    /**
-     * 用户性别
-     */
+    @ApiModelProperty(value = "用户性别", name = "userSex")
     private String userSex;
+
+    @ApiModelProperty(value = "角色ID", name = "roleId")
+    private String roleId;
 
 
     public Integer getUserOrder() {
@@ -87,21 +66,6 @@ public class UserDto {
         this.userOrder = userOrder;
     }
 
-    public String getUserLandline() {
-        return userLandline;
-    }
-
-    public void setUserLandline(String userLandline) {
-        this.userLandline = userLandline;
-    }
-
-    public String getUserDianthus() {
-        return userDianthus;
-    }
-
-    public void setUserDianthus(String userDianthus) {
-        this.userDianthus = userDianthus;
-    }
 
     public String getUserPosition() {
         return userPosition;
@@ -182,6 +146,22 @@ public class UserDto {
 
     public void setLastLoginTime(String lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
+    }
+
+    public String getOfficePhone() {
+        return officePhone;
+    }
+
+    public void setOfficePhone(String officePhone) {
+        this.officePhone = officePhone;
+    }
+
+    public String getUserDuty() {
+        return userDuty;
+    }
+
+    public void setUserDuty(String userDuty) {
+        this.userDuty = userDuty;
     }
 
     public String getRoleId() {
