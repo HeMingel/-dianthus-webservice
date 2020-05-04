@@ -17,13 +17,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 public class DianthusApplication implements WebMvcConfigurer  {
 
-
-
-//    @Bean
-//    public static SpringUtil getSpringUtil() {
-//        return new SpringUtil();
-//    }
-
     public static void main(String[] args) {
         SpringApplication.run(DianthusApplication.class, args);
 
@@ -32,6 +25,5 @@ public class DianthusApplication implements WebMvcConfigurer  {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
-      //  registry.addViewController("/index").setViewName("index");
     }
 }

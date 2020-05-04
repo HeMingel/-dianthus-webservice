@@ -34,9 +34,9 @@ public class HomeViewController {
     @Autowired
     private MenuRoleService menuRoleService;
 
-    @RequestMapping(value = "/sql")
+    @RequestMapping(value = "/table")
     public String showSql() {
-        return "sql/pm_sql_design";
+        return "pages/table";
     }
 
     @RequestMapping(value = "/main")
